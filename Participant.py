@@ -1,11 +1,10 @@
-
 class Participant:
 
     def __init__(self, name, assigned_person=None):
         self.name = name
         self.assigned_person = assigned_person
 
-    def assign_person(self, person):
+    def set_assigned_person(self, person):
         self.assigned_person = person
 
     def get_assigned_person(self):

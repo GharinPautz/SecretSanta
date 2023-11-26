@@ -43,6 +43,46 @@ class Test_Assign_Gifter(unittest.TestCase):
         # Check that all participants are included as receivers
         self.assertEqual(set(receivers), set(participants))
 
+    def test_get_num_participants(self):
+        participant1 = Participant("Nicki")
+        particpant2 = Participant("Taylor")
+        participant3 = Participant("Brandon")
+
+        participants = [participant1, particpant2, participant3]
+        secret_santa = Secret_Santa(participants)
+
+        self.assertEqual(secret_santa.get_num_participants(), 3)
+
+    def test_add_participant(self):
+        participant1 = Participant("Nicki")
+        particpant2 = Participant("Taylor")
+        participant3 = Participant("Brandon")
+
+        participants = [participant1, particpant2, participant3]
+        secret_santa = Secret_Santa(participants)
+
+        participant4 = Participant("Justin")
+        secret_santa.add_participant(participant4)
+
+        self.assertEqual(secret_santa.get_num_participants(), 4)
+
+    def test_remove_participant(self):
+        participant1 = Participant("Nicki")
+        particpant2 = Participant("Taylor")
+        participant3 = Participant("Brandon")
+
+        participants = [participant1, particpant2, participant3]
+        secret_santa = Secret_Santa(participants)
+
+        self.assertEqual(secret_santa.get_num_participants(), 3)
+
+        self.assertEqual(secret_santa.participants[-1].name, "Brandon")
+
+        secret_santa.remove_participant(participant3)
+        self.assertEqual(secret_santa.get_num_participants(), 2)
+
+        self.assertNotEqual(secret_santa.participants[-1].name, "Brandon")
+
 
 if __name__ == "__main__":
     unittest.main()
