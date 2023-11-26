@@ -10,7 +10,7 @@ class Test_Assign_Gifter(unittest.TestCase):
         "Lizzo",
         "Troye",
         "Abel",
-        "Jesse",
+        "Jessie",
         "Shawn",
         "Justin",
         "Harry",
