@@ -21,6 +21,15 @@ class Test_Participant(unittest.TestCase):
         participant1.set_assigned_person(participant2)
         self.assertEqual(participant1.get_assigned_person(), participant2.name)
 
+    def test_set_name(self):
+        participant1 = Participant("Ghar")
+        participant1.set_name("Nick")
+        self.assertEqual(participant1.get_name(), "Nick")
+
+    def test_get_name(self):
+        participant1 = Participant("Ghar")
+        self.assertEqual(participant1.get_name(), "Ghar")
+
 
 if __name__ == "__main__":
     unittest.main()

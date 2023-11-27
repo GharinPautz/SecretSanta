@@ -22,6 +22,19 @@ class Test_Assign_Gifter(unittest.TestCase):
         "Kim"
     ]
 
+    def test_init(self):
+        participants = []
+        for participant in self.work_participants:
+            participants.append(Participant(participant))
+
+        secret_santa = Secret_Santa(participants)
+
+        for i in range(0, len(self.work_participants)):
+            self.assertEqual(
+                self.work_participants[i], secret_santa.participants[i].name)
+
+        self.assertEqual(secret_santa.assignments, {})
+
     def test_assign_gifts(self):
         participants = []
         for participant in self.work_participants:
@@ -82,6 +95,34 @@ class Test_Assign_Gifter(unittest.TestCase):
         self.assertEqual(secret_santa.get_num_participants(), 2)
 
         self.assertNotEqual(secret_santa.participants[-1].name, "Brandon")
+
+    def test_set_participants(self):
+        participant1 = Participant("Nicki")
+        particpant2 = Participant("Taylor")
+        participant3 = Participant("Brandon")
+
+        participants = [participant1, particpant2, participant3]
+        secret_santa = Secret_Santa(participants)
+
+        new_participants = []
+        for participant in self.work_participants:
+            new_participants.append(Participant(participant))
+
+        secret_santa.set_participants(new_participants)
+
+        self.assertEqual(secret_santa.get_num_participants(), 14)
+        self.assertEqual(secret_santa.get_participants()[-1].get_name(), "Kim")
+
+    def test_get_participant(self):
+        participant1 = Participant("Nicki")
+        particpant2 = Participant("Taylor")
+        participant3 = Participant("Brandon")
+
+        participants = [participant1, particpant2, participant3]
+        secret_santa = Secret_Santa(participants)
+
+        self.assertEqual(secret_santa.get_participants()
+                         [-1].get_name(), "Brandon")
 
 
 if __name__ == "__main__":
