@@ -1,4 +1,5 @@
 # Project dependencies
+Flask==3.0.0
 
 # Development dependencies
 flake8==3.9.2
